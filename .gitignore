@@ -1,0 +1,15 @@
+
+# Stanford bunny
+*.gz
+bunny/**
+
+# python
+*.pyc
+**/__pycache__
+
+# MacOS
+.DS_Store
+**/.DS_Store
+._.DS_Store
+**/._.DS_Store
+
