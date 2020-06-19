@@ -1,6 +1,10 @@
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 import numpy as np
 import tensorflow as tf
+tf.get_logger().setLevel('INFO')
 tf.compat.v1.enable_eager_execution()
 
 from ptfrenderer import utils

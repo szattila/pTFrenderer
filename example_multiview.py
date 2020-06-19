@@ -1,9 +1,4 @@
 
-# %cd '/content/drive/My Drive/code/renderer'
-# !ln -sf /opt/bin/nvidia-smi /usr/bin/nvidia-smi
-# import subprocess
-# print(subprocess.getoutput('nvidia-smi'))
-
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
@@ -14,7 +9,6 @@ tf.compat.v1.enable_eager_execution()
 
 import argparse
 import matplotlib.pyplot as plt
-from PIL import Image
 
 from ptfrenderer import utils
 from ptfrenderer import camera
@@ -31,8 +25,8 @@ parser.add_argument('-meshres', default=128, type=int)
 parser.add_argument('-nviews', default=1000, type=int)
 parser.add_argument('-margin', default=1., type=float)
 parser.add_argument('-blur_mesh', default=2.0, type=float)
-parser.add_argument('-batch_size', default=50, type=int)
-parser.add_argument('-epochs', default=10, type=int)
+parser.add_argument('-batch_size', default=100, type=int)
+parser.add_argument('-epochs', default=15, type=int)
 parser.add_argument('-lrate', default=0.01, type=float)
 args = parser.parse_args()
 
@@ -52,14 +46,13 @@ grid_size = [5, 7]
 
 
 def load_im(path):
-	im = np.asarray(Image.open(path))
+	im = np.asarray(plt.imread(path))
 	im = im.astype(np.float32) / 255.
 	return im
 
 def save_im(im, path):
 	im = np.array(tf.cast(tf.clip_by_value(im, 0., 1.)*255., tf.uint8))
-	pilim = Image.fromarray(im)
-	pilim.save(path)
+	plt.imsave(path, im)
 	return
 
 class Scene(tf.keras.Model):
