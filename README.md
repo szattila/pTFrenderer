@@ -11,10 +11,11 @@ All platform are supported where Tensorflow can be installed. We tested the rend
 
 ## Examples
 
-In order to display the rendered images we use Matplotlib. It can be installed by the command below.
+In order to display, load and save images we use Matplotlib and Pillow. They can be installed by the commands below.
 
 ```.bash
 pip install matplotlib
+pip install pillow
 ```
 
 Basic examples include rendering a cube from multiple angles, adding texture, rendering sphere and lighting a sphere with the Lambertian reflectance model. You can try them by running the scripts below.
