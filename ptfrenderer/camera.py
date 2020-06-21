@@ -136,7 +136,7 @@ def rotation_matrix(angle, axis):
 def hom(X, mode):
 	"""
 	It converts transformation X (translation, rotation or rigid motion)
-	to homodenous form.
+	to homogenous form.
 
 	Input:
 	X: tf.float32 array, which can be either

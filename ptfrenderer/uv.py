@@ -190,7 +190,7 @@ def sphere(meshsize):
         return 1+2*(n//2)
     H = odd(meshsize[-2]); W = odd(meshsize[-1])
 
-    def triangles_shphere():
+    def triangles_sphere():
         idx = tf.reshape(tf.range(H*W), [H, W])
         # vertices [H-1, W-1]
         v00 = idx[0:H-1,0:W-1]
@@ -236,6 +236,6 @@ def sphere(meshsize):
         uv = tf.compat.v2.where(isback, uvback, uv)
         return uv
     vertuv = vert_to_2D(vert_3D())
-    triangles = triangles_shphere()
+    triangles = triangles_sphere()
     return vertuv, triangles
 
